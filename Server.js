@@ -34,8 +34,11 @@ server.on('connection',function(sock){
             
         }
         else if(!isNaN(parseInt(data))){
-            clients[name] = clients[name] +  parseInt(data); 
-            sock.write(`Your score is ${clients[name]}\nGet Command : `);
+            if(!isNaN(clients[name])){
+                clients[name] = clients[name] +  parseInt(data);
+                sock.write(`Your score is ${clients[name]}\nGet Command : `);
+            }
+            else sock.write('Not Found !!!!!!!!!!!!!!\nWho are you : ');
         } 
         
         
